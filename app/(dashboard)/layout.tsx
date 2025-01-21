@@ -9,7 +9,7 @@ const DashboardLayout = ({childeren}: Props) => {
         <>
             <Header />
             <div>
-                Layout
+                {childeren}
             </div>
         </>
     );
