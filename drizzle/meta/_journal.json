@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1737971881033,
+      "tag": "0000_aberrant_ultragirl",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1737972663063,
+      "tag": "0001_pretty_fantastic_four",
+      "breakpoints": true
+    }
+  ]
+}
