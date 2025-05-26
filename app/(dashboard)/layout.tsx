@@ -1,15 +1,15 @@
 import { Header } from "@/components/header";
 
 type Props = {
-    childeren: React.ReactNode
+    children: React.ReactNode
 }
 
-const DashboardLayout = ({childeren}: Props) => {
+const DashboardLayout = ({children}: Props) => {
     return (
         <>
             <Header />
             <div>
-                {childeren}
+                {children}
             </div>
         </>
     );
