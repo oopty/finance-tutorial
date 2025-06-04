@@ -11,5 +11,6 @@ export const useOpenAccount = create<OpenAccountState>((set) => ({
     id: undefined,
     isOpen: false,
     onOpen: (id: string) => set({ isOpen: true, id: id }),
+    // onClose: () => set({ isOpen: false }),
     onClose: () => set({ isOpen: false, id: undefined })
 }))

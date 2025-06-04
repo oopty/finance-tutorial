@@ -13,7 +13,7 @@ import {
  import {  } from "@/features/accounts/hooks/use-new-account";
  import { useGetAccount } from "@/features/accounts/api/use-get-account";
  import { useOpenAccount } from "@/features/accounts/hooks/use-open-account";
- import { useCreateAccount } from "@/features/accounts/api/use-create-account";
+ import { useEditAccount } from "@/features/accounts/api/use-edit-account";
  
  const formSchema = insertAccountSchema.pick({
      name: true,
@@ -24,12 +24,15 @@ import {
     const { isOpen, onClose, id } = useOpenAccount();
 
     const accountQuery = useGetAccount(id);
-    const mutation = useCreateAccount();
+    const editMutation = useEditAccount(id);
+
+    const isPending =
+        editMutation.isPending;
 
     const isLoading = accountQuery.isLoading;
 
     const onSubmit = (values: FormValues) => {
-        mutation.mutate(values, {
+        editMutation.mutate(values, {
             onSuccess: () => {
                 onClose();
             }
@@ -47,10 +50,10 @@ import {
             <SheetContent className="space-y-4">
                 <SheetHeader>
                     <SheetTitle>
-                        New Account
+                        Edit Account
                     </SheetTitle>
                     <SheetDescription>
-                        Create a new account to track your transactionds.
+                        Edit a exist account.
                     </SheetDescription>
                 </SheetHeader>
                 {isLoading ? 
@@ -60,8 +63,9 @@ import {
                     </div>    
                 ): (
                     <AccountForm 
+                        id={id}
                         onSubmit={onSubmit} 
-                        disabled={mutation.isPending}
+                        disabled={isPending}
                         defaultValues={defaultValues}// 요걸 빼면 왜 에러가 나지?
                     />
                 )}
